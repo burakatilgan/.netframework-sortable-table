@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Draggable_Table.Models.dnm>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-ui-1.13.2.min.js"></script>
+<style>
+    #sortable tr:hover {
+        background-color: #0094ff;
+        color: #fff;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("#sortable").sortable({
+            update: function (event, ui) {
+                var itemIds = "";
+                $("#sortable").find("taskSingleInline").each(function () {
+                    var itemId = $(this).attr("data-taskid");
+                    itemIds = itemIds + itemId + ",";
+                });
+                $.ajax({
+                    url:'@Url.Action("UpdateItem", "Draggable")',
+                    data: { itemids: itemids },
+                    type: 'POST',
+                    success: function (data) {
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+            },
+        });
+    });
+    
+</script>
+
+
+<div class="container">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody id="sortable" style="cursor:pointer" ;>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td class="taskSingleInline" id="task@(item.id)" data-taskid="@(item.id)">@item.name</td>
+                        <td>@item.rowNo</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="@Url.Action("Index","Draggable")">Update Position</a>
+    </div>
+</div>
