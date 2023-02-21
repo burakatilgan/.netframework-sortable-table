@@ -18,5 +18,6 @@ namespace Draggable_Table.Models
         public string name { get; set; }
         public string surname { get; set; }
         public Nullable<int> rowNo { get; set; }
+        public Nullable<int> colNo { get; set; }
     }
 }

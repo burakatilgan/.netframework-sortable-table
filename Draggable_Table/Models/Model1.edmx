@@ -31,23 +31,25 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="rowNo" Type="Int32" />
+          <Property Name="colNo" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="dragable_table_exEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="dnms" EntityType="Self.dnm" />
+        <EntityContainer Name="dragable_table_exEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dnm" EntityType="Self.dnm" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dragable_table_exModelStoreContainer" CdmEntityContainer="dragable_table_exEntities1">
-          <EntitySetMapping Name="dnms">
+        <EntityContainerMapping StorageEntityContainer="dragable_table_exModelStoreContainer" CdmEntityContainer="dragable_table_exEntities">
+          <EntitySetMapping Name="dnm">
             <EntityTypeMapping TypeName="dragable_table_exModel.dnm">
               <MappingFragment StoreEntitySet="dnm">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
                 <ScalarProperty Name="rowNo" ColumnName="rowNo" />
+                <ScalarProperty Name="colNo" ColumnName="colNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -65,7 +67,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

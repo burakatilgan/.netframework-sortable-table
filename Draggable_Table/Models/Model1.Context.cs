@@ -13,10 +13,10 @@ namespace Draggable_Table.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dragable_table_exEntities1 : DbContext
+    public partial class dragable_table_exEntities : DbContext
     {
-        public dragable_table_exEntities1()
-            : base("name=dragable_table_exEntities1")
+        public dragable_table_exEntities()
+            : base("name=dragable_table_exEntities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Draggable_Table.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<dnm> dnms { get; set; }
+        public virtual DbSet<dnm> dnm { get; set; }
     }
 }
